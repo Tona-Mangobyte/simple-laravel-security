@@ -1,8 +1,7 @@
 <nav class="navbar navbar-expand-lg " color-on-scroll="500">
-    {{--@php
-        use App\UserMaster;
+    @php
         $user = Auth::user();
-    @endphp--}}
+    @endphp
     <div class="container-fluid">
         <a class="navbar-brand"> {{ $navName }} </a>
         <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,12 +26,12 @@
                 <!--</li>-->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span>Simple Admin&ensp;</span>
+                        <span>{{ $user->email }}</span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <form id="logout-form" action="{{ ('/user_master/logout') }}" method="POST">
+                        <form id="logout-form" action="{{ ('/logout') }}" method="POST">
                             @csrf
-                            <a class="dropdown-item" href="{{ ('/user_master/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> {{ __('ログアウト') }} </a>
+                            <a class="dropdown-item" href="{{ ('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> logout </a>
                         </form>
                     </div>
                 </li>
