@@ -18,6 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/authentication', '\App\Http\Controllers\SimpleLoginController@index')->name('auth.login');
-Route::post('/authentication/process', '\App\Http\Controllers\SimpleLoginController@authentication')->name('auth.process');
+Route::get('/authentication', '\App\Http\Controllers\BasicLoginController@index')->name('auth.login');
+Route::post('/authentication/process', '\App\Http\Controllers\BasicLoginController@authentication')->name('auth.process');
+Route::get('/dashboard', '\App\Http\Controllers\DashboardController@index')->name('auth.dashboard');
 // Route::get('/login', [SimpleLoginController::class, 'index'])->name('auth.login');

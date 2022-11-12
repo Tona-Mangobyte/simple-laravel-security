@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
-class SimpleLoginController extends Controller
+class BasicLoginController extends Controller
 {
     public function index(): View
     {
@@ -99,7 +99,6 @@ class SimpleLoginController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  mixed  $user
-     * @return void
      */
     protected function authenticated(Request $request, mixed $user)
     {
