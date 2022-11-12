@@ -30,11 +30,36 @@ class BasicLoginController extends Controller
         return $this->sendFailedLoginResponse($request);
     }
 
+    /**
+     * Log the user out of the application.
+     *
+     * @param  Request  $request
+     */
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return $this->loggedOut($request) ?: redirect('/');
+    }
+
+    /**
+     * The user has logged out of the application.
+     *
+     * @param  Request  $request
+     */
+    protected function loggedOut(Request $request)
+    {
+        //
+    }
 
     /**
      * Attempt to log the user into the application.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  Request  $request
      * @return bool
      */
     protected function attemptLogin(Request $request): bool
@@ -47,7 +72,7 @@ class BasicLoginController extends Controller
     /**
      * Get the needed authorization credentials from the request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  Request  $request
      * @return array
      */
     protected function credentials(Request $request): array
@@ -58,8 +83,7 @@ class BasicLoginController extends Controller
     /**
      * Send the response after the user was authenticated.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  Request  $request
      */
     protected function sendLoginResponse(Request $request)
     {

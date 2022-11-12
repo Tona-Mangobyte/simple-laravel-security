@@ -20,5 +20,6 @@ Route::get('/', function () {
 
 Route::get('/authentication', '\App\Http\Controllers\BasicLoginController@index')->name('auth.login');
 Route::post('/authentication/process', '\App\Http\Controllers\BasicLoginController@authentication')->name('auth.process');
+Route::post('/logout', '\App\Http\Controllers\BasicLoginController@logout')->name('auth.logout');
 Route::get('/dashboard', '\App\Http\Controllers\DashboardController@index')->name('auth.dashboard');
 // Route::get('/login', [SimpleLoginController::class, 'index'])->name('auth.login');
