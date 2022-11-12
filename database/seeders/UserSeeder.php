@@ -9,6 +9,7 @@ class UserSeeder extends Seeder
 {
     public function run()
     {
+        User::truncate();
         User::factory(100)->create();
         User::factory()->create([
              'name' => 'Admin User',
